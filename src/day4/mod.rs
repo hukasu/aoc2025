@@ -96,7 +96,7 @@ impl FloorPlan {
             .collect()
     }
 
-    fn build_adjacency_matrix(grid: &[Vec<u8>]) -> Vec<Vec<u32>> {
+    fn build_adjacency_matrix(grid: &[Vec<u8>]) -> Vec<Vec<u8>> {
         let rows = grid.len();
         let columns = grid[0].len();
         let mut adjacency_matrix = vec![vec![0; columns]; rows];
