@@ -57,9 +57,9 @@ impl FloorPlan {
                     *tile = EMPTY_TILE;
 
                     let left_column = column.checked_sub(1);
-                    let right_column = (column + 1 < columns).then_some(column + 1);
+                    let right_column = Some(column + 1).filter(|column| *column < columns);
                     let top_row = row.checked_sub(1);
-                    let bottom_row = (row + 1 < rows).then_some(row + 1);
+                    let bottom_row = Some(row + 1).filter(|row| *row < rows);
 
                     for (row, column) in [
                         (top_row, left_column),
@@ -104,9 +104,9 @@ impl FloorPlan {
         for (row_num, row) in grid.iter().enumerate() {
             for (column_num, _) in row.iter().enumerate().filter(|(_, c)| **c == PAPER_ROLL) {
                 let left_column = column_num.checked_sub(1);
-                let right_column = (column_num + 1 < columns).then_some(column_num + 1);
+                let right_column = Some(column_num + 1).filter(|column| *column < columns);
                 let top_row = row_num.checked_sub(1);
-                let bottom_row = (row_num + 1 < rows).then_some(row_num + 1);
+                let bottom_row = Some(row_num + 1).filter(|row| *row < rows);
 
                 for (row, column) in [
                     (top_row, left_column),
