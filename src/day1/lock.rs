@@ -17,8 +17,8 @@ impl Lock {
         let Ok(full_turns) = u32::try_from(rhs / 100) else {
             unreachable!("Will never be negative and will never overflow.");
         };
-        let remaing_moves = rhs % 100;
-        let after = self.0 - remaing_moves;
+        let remaining_moves = rhs % 100;
+        let after = self.0 - remaining_moves;
         let q = if self.0 != 0 && after <= 0 { 1 } else { 0 };
         let m = after.rem_euclid(100);
         (Self(m), full_turns + q)
